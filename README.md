@@ -301,7 +301,24 @@ Only OSX Supported
 appscript==1.0.1
 appnope==0.1.0
 
+####### May Need Further Debugging
+
+Not Supported
+gmpy2==2.0.8 - https://pypi.org/project/gmpy2/ Allows floating-point integers.
+
+Error found:
+
+In file included from src/gmpy2.c:426:0:
+remote:            src/gmpy.h:252:12: fatal error: mpfr.h: No such file or directory
+remote:             #  include "mpfr.h"
+
+Note - we may need to install mpfr.h according to the Installation documentation.
+https://gmpy2.readthedocs.io/en/latest/intro.html#installation
 
 ###### A Word on Package Dependency Management
 
 https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
+
+####### Docker Images
+
+The reason why one would want to use a docker image is to able to 100% mimic a remote environment on one's local machine.  The reason why one would want to mimic a remote environment on one's local machine is to be able to understand which packages are going to work and to prevent the installation of incompatible packages which will slow down the deploy process.  For example, including "appscript" in the requirements.txt file lead to the dependency appscript being found, however since it is only compatible with the operating system OS, then upon attempting to install it within the Heroku build process, it was rejected, making the entire setup process fail.
