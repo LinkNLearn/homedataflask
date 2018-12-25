@@ -49,7 +49,7 @@ After installing Gunicorn, ensure that your requirements file is updated with:
 
 pip freeze > requirements.txt
 
-#### Create a Virtual Environment
+#### Create a Virtual Environment To Test Gunicorn
 
 Set up a virtual environment in order to isolate our Flask application from the other Python files on the system.
 
@@ -160,6 +160,21 @@ gunicorn --bind 0.0.0.0:8000 wsgi
 [2018-12-24 14:02:19 -0600] [65104] [INFO] Worker exiting (pid: 65104)
 [2018-12-24 14:02:20 -0600] [65133] [INFO] Booting worker with pid: 65133
 
+###### Picking Locations In the File for Gunicorn
+
+Gunicorn takes a flag, --chdir, that lets you select which directory your Python app lives in. So, if you have a directory structure like:
+
+my-project/
+  Procfile
+  my_folder/
+    my_module.py
+and my_module.py contains:
+
+app = Flask(__name__, ...)
+You can put the following in your Procfile:
+
+web: gunicorn --chdir my_folder my_module:app
+
 #### Adding a Procfile
 
 Procfile is a mechanism for declaring what commands are run by your application's Dynos on the Heroku platform. It's basically a list of commands that Heroku reads in order to get things started.  Whatever is in the Procfile should be reflective of what we did in the above section with Gunicorn to get the app hosted on our local machine.
@@ -211,13 +226,37 @@ Doing this shows that you are able to connect to Heroku and that you are able to
 
 ##### Pushing Source Code to Heroku Git
 
-Heroku links your projects based on the heroku git remote. To add your Heroku remote as a remote in your current repository, use the following command:
+Heroku links your projects based on the heroku git remote. To add your Heroku remote as a remote in your current repository, use the following command (all of this is found under the "Deploy" section on your Heroku dashboard):
 
-$ git remote add heroku git@heroku.com:homedataflask.git
 $ heroku git:remote -a homedataflask
+set git remote heroku to https://git.heroku.com/homedataflask.git
+/homedataflask$ git add .
+/homedataflask$ git commit -am "make it better"
+[master 59c63bd] make it better
+ 1 file changed, 21 insertions(+)
+/homedataflask$ git push heroku master
 
 You should get the result:
 
-set git remote heroku to https://git.heroku.com/homedataflask.git
+Counting objects: 1940, done.
+Delta compression using up to 4 threads.
+Compressing objects: 100% (1897/1897), done.
+Writing objects:  21% (408/1940), 2.56 MiB | 86.00 KiB/s
+Total 1940 (delta 541), reused 3 (delta 0)
 
-Error: You do not have access to the app project.
+###### Debugging For Production
+
+* No default language could be detected for this app
+
+This article explains buildpacks: https://devcenter.heroku.com/articles/buildpacks
+
+$ heroku buildpacks:set heroku/python
+
+You should get the following result:
+
+Buildpack set. Next release on homedataflask will use heroku/python.
+Run git push heroku master to create a new release using this buildpack.
+
+* App not compatible with buildpack:
+
+https://devcenter.heroku.com/articles/buildpacks#detection-failure
