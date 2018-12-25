@@ -278,6 +278,8 @@ Basically this means the buildpack is not set to the right language, or there is
 
 This means that Heroku can't work with the distribution called out.  You can delete these requirements from the requirement file one by one as a way to potentially fix this issue, of course you can't delete requirements that the app actually needs.  Note - it would have been better to make the requirements file within the virtual environment rather than just running on the local machine, as you may have had many packages installed from varieties of programs being built in the past, some of which could have been out of date.  Some distributions that we had errors thrown on were the following during our installation:
 
+Couldn't Find Versions:
+
 blaze==0.11.3
 conda==4.5.11
 conda-build==3.15.1
@@ -287,6 +289,9 @@ mkl-fft==1.0.4
 mkl-random==1.0.1
 navigator-updater==0.2.1
 odo==0.5.1
+
+Only Windows and OSX Supported
+xlwings==0.11.8
 
 ###### A Word on Package Dependency Management
 
