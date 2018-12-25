@@ -72,6 +72,16 @@ Once you have done this, you should see the following files within your project 
 
 bin/  include/ lib/
 
+##### Other Notes
+
+Running virtualenv with the option --no-site-packages will not include the packages that are installed globally. This can be useful for keeping the package list clean in case it needs to be accessed later. [This is the default behavior for virtualenv 1.7 and later.]
+
+In order to keep your environment consistent, it’s a good idea to “freeze” the current state of the environment packages. To do this, run:
+
+$ pip freeze > requirements.txt
+
+This will be a way of creating a requirements.txt file with a reduced number of dependencies listed.
+
 ##### Activate the Project environment
 
 $ source helloprojenv/bin/activate
@@ -200,3 +210,14 @@ homedataflask
 Doing this shows that you are able to connect to Heroku and that you are able to see the app that you are trying to build to.
 
 ##### Pushing Source Code to Heroku Git
+
+Heroku links your projects based on the heroku git remote. To add your Heroku remote as a remote in your current repository, use the following command:
+
+$ git remote add heroku git@heroku.com:homedataflask.git
+$ heroku git:remote -a homedataflask
+
+You should get the result:
+
+set git remote heroku to https://git.heroku.com/homedataflask.git
+
+Error: You do not have access to the app project.
