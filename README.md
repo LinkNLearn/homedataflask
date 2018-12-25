@@ -280,18 +280,27 @@ This means that Heroku can't work with the distribution called out.  You can del
 
 Couldn't Find Versions:
 
-blaze==0.11.3
+blaze==0.11.3 (appears to be out of date, last updated 2016)
+
+Connected to Anaconda
 conda==4.5.11
 conda-build==3.15.1
 clyent==1.2.2
+navigator-updater==0.2.1
+
 datashape==0.5.4
 mkl-fft==1.0.4
 mkl-random==1.0.1
-navigator-updater==0.2.1
+
 odo==0.5.1
 
 Only Windows and OSX Supported
 xlwings==0.11.8
+
+Only OSX Supported
+appscript==1.0.1
+appnope==0.1.0
+
 
 ###### A Word on Package Dependency Management
 
