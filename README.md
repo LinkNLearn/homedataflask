@@ -49,6 +49,15 @@ After installing Gunicorn, ensure that your requirements file is updated with:
 
 pip freeze > requirements.txt
 
+##### Making Viewable Within Atom Text Editor
+
+Incidentally, if you are using the popular Atom text editor, .txt files are defined as "VCS Ignored Files" - default files that will be ignored by the system as they would in .gitignore within github.  In order to show these files, you have to go under Preferences > Settings and then deselect to ignore these types of files in a couple different places:
+
+1. Within the main Core Settings - just untick the box for ignore VCS Files.
+2. Within the package, "Tree View" - go under settings and untick the box.
+
+Once you have done this, you should be able to view the .txt file within Atom.
+
 #### Create a Virtual Environment To Test Gunicorn
 
 Set up a virtual environment in order to isolate our Flask application from the other Python files on the system.
