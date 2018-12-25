@@ -282,3 +282,4 @@ blaze==0.11.3
 conda==4.5.11
 conda-build==3.15.1
 clyent==1.2.2
+datashape==0.5.4
