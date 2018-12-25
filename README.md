@@ -286,6 +286,7 @@ datashape==0.5.4
 mkl-fft==1.0.4
 mkl-random==1.0.1
 navigator-updater==0.2.1
+odo==0.5.1
 
 ###### A Word on Package Dependency Management
 
