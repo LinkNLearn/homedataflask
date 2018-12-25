@@ -271,3 +271,13 @@ Run git push heroku master to create a new release using this buildpack.
 * App not compatible with buildpack:
 
 https://devcenter.heroku.com/articles/buildpacks#detection-failure
+
+Basically this means the buildpack is not set to the right language, or there is no requirements file.
+
+* No matching distribution found for XXXX
+
+This means that Heroku can't work with the distribution called out.  You can delete these requirements from the requirement file one by one as a way to potentially fix this issue, of course you can't delete requirements that the app actually needs.  Some distributions that we had errors thrown on were the following:
+
+blaze==0.11.3
+conda==4.5.11
+conda-build==3.15.1
