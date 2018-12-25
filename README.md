@@ -276,8 +276,9 @@ Basically this means the buildpack is not set to the right language, or there is
 
 * No matching distribution found for XXXX
 
-This means that Heroku can't work with the distribution called out.  You can delete these requirements from the requirement file one by one as a way to potentially fix this issue, of course you can't delete requirements that the app actually needs.  Some distributions that we had errors thrown on were the following:
+This means that Heroku can't work with the distribution called out.  You can delete these requirements from the requirement file one by one as a way to potentially fix this issue, of course you can't delete requirements that the app actually needs.  Note - it would have been better to make the requirements file within the virtual environment rather than just running on the local machine, as you may have had many packages installed from varieties of programs being built in the past, some of which could have been out of date.  Some distributions that we had errors thrown on were the following during our installation:
 
 blaze==0.11.3
 conda==4.5.11
 conda-build==3.15.1
+clyent==1.2.2
