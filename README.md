@@ -305,6 +305,7 @@ appnope==0.1.0
 
 Not Supported
 gmpy2==2.0.8 - https://pypi.org/project/gmpy2/ Allows floating-point integers.
+pyodbc==4.0.24
 
 Error found:
 
