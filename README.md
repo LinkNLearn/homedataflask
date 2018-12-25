@@ -160,6 +160,8 @@ gunicorn --bind 0.0.0.0:8000 wsgi
 [2018-12-24 14:02:19 -0600] [65104] [INFO] Worker exiting (pid: 65104)
 [2018-12-24 14:02:20 -0600] [65133] [INFO] Booting worker with pid: 65133
 
+Once you have proved that Gunicorn can run the app, you can delete the environment folder by deleting the file you used to host the environment while saving your main app files from that folder.
+
 ###### Picking Locations In the File for Gunicorn
 
 Gunicorn takes a flag, --chdir, that lets you select which directory your Python app lives in. So, if you have a directory structure like:
