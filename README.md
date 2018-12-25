@@ -283,3 +283,10 @@ conda==4.5.11
 conda-build==3.15.1
 clyent==1.2.2
 datashape==0.5.4
+mkl-fft==1.0.4
+mkl-random==1.0.1
+navigator-updater==0.2.1
+
+###### A Word on Package Dependency Management
+
+https://medium.com/python-pandemonium/better-python-dependency-and-package-management-b5d8ea29dff1
