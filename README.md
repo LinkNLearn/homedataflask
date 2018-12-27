@@ -2,6 +2,10 @@
 
 Flask App, Deployable to Heroku for Analysis of data repo stored at github.com/linknlearn/homedata
 
+Endpoint can be found here:
+
+https://homedataflask.herokuapp.com/
+
 ## Using Heroku
 
 Heroku is a cloud Platform as a Service (PaaS) which allows developers to build, run and scale applications.  Heroku has the following features:
@@ -215,6 +219,7 @@ my-project/
 and my_module.py contains:
 
 app = Flask(__name__, ...)
+
 You can put the following in your Procfile:
 
 web: gunicorn --chdir my_folder my_module:app
@@ -234,6 +239,10 @@ app = Flask(__name__)
 That being said, if our app was called something like, "thisapp = Flask(__name__)" then we would need to use:
 
 web: gunicorn app:thisapp
+
+In our case, we're using:
+
+web: gunicorn hello:application
 
 #### Deploying to Heroku
 
