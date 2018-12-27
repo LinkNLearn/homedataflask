@@ -66,7 +66,7 @@ $ pip install virtualenv
 
 We are using the parent directory "homedataflask"  We navigate into this parent directory and use virtualenv to create a virtual project environment as follows:
 
-$ virtualenv helloprojenv
+$ virtualenv --no-site-packages helloprojenv
 
 When this command is executed you should see the following:
 
@@ -91,15 +91,46 @@ $ pip freeze > requirements.txt
 
 This will be a way of creating a requirements.txt file with a reduced number of dependencies listed.
 
-##### Activate the Project environment
+##### Activate the Project Environment
 
-$ source helloprojenv/bin/activate
+$ source helloprojenv/bin/activate --no-site-packages
 
 Your prompt will change to indicate that you are now operating within the virtual environment.
 
+###### Adding New Installations to Project Environment with --no-site-packages Option
+
+Let's take a quick look at what happens in the requirements.txt file if we create it.  If you run the following:
+
+$ pip freeze > requirements.txt
+
+You will see that, running in the virtual environment, nothing will happen, nothing will be added to requirements.txt.
+
+Install flask with:
+
+$ pip3 install flask
+
+Then once again run:
+
+$ pip freeze > requirements.txt
+
+Then, look in the requirements.txt file, and you will see the following will have been added:
+
+Click==7.0
+Flask==1.0.2
+itsdangerous==1.1.0
+Jinja2==2.10
+MarkupSafe==1.1.0
+Werkzeug==0.14.1
+
+This is far fewer requirements than we would have had if we would have just started with the requirements file from our local machine, which had tons of different python libraries installed from years of different work.  This will be necessary to bring down the Slug building time to the point where it will be possible to build the app.  If we try to build with too many packages, then we will get a time out and it won't serve.
+
+Obviously, you are going to have to install all of the necessary packages within the virtual environment needed to run the application as well as run the server.  Once you're done installing all of the needed applications in the virtual environment, you will have to run the following to finish things off:
+
+$ pip freeze > requirements.txt
+
 #### Running the App Locally with Gunicorn
 
-Install gunicorn-flask with:
+Install gunicorn-flask into the virtual environment with:
 
 $ pip install gunicorn flask
 
@@ -148,11 +179,7 @@ We should put the file wsgi.py in --helloprojenv not -homedataflask because we h
 
 ##### Testing Gunicorn's Ability to Serve the Project
 
-Exit the virtual environment and run the following:
-
-deactivate
-
-Then, test guinicorn by running:
+While in the virtual environment, you can test guinicorn by running:
 
 gunicorn --bind 0.0.0.0:8000 wsgi
 
@@ -170,6 +197,12 @@ gunicorn --bind 0.0.0.0:8000 wsgi
 [2018-12-24 14:02:20 -0600] [65133] [INFO] Booting worker with pid: 65133
 
 Once you have proved that Gunicorn can run the app, you can delete the environment folder by deleting the file you used to host the environment while saving your main app files from that folder.
+
+Exit the virtual environment and run the following:
+
+deactivate
+
+Then, move the appropriate folders around and delete the virtual environment folders.
 
 ###### Picking Locations In the File for Gunicorn
 
