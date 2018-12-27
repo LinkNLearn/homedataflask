@@ -255,7 +255,7 @@ Compressing objects: 100% (1897/1897), done.
 Writing objects:  21% (408/1940), 2.56 MiB | 86.00 KiB/s
 Total 1940 (delta 541), reused 3 (delta 0)
 
-###### Debugging For Production
+###### Debugging For Production - Building Slug
 
 * No default language could be detected for this app
 
@@ -315,6 +315,27 @@ remote:             #  include "mpfr.h"
 
 Note - we may need to install mpfr.h according to the Installation documentation.
 https://gmpy2.readthedocs.io/en/latest/intro.html#installation
+
+
+* NLTK 'nltk.txt' not found
+
+remote: -----> Downloading NLTK corpora…
+remote:  !     'nltk.txt' not found, not downloading any corpora
+remote:  !     Learn more: https://devcenter.heroku.com/articles/python-nltk
+
+* Warning: Your slug size exceeds our soft limit (493 MB) which may affect boot time.
+
+
+###### Debugging After Build - Looking At Server Logs
+
+After we deploy and build the Slug, the application may still not work!
+
+heroku logs --tail
+
+* 2018-12-25T15:13:27.030264+00:00 heroku[router]: at=error code=H20 desc="App boot timeout" method=GET path="/" host=homedataflask.herokuapp.com
+
+
+
 
 ###### A Word on Package Dependency Management
 
