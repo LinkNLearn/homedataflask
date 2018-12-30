@@ -386,3 +386,15 @@ https://medium.com/python-pandemonium/better-python-dependency-and-package-manag
 ####### Docker Images
 
 The reason why one would want to use a docker image is to able to 100% mimic a remote environment on one's local machine.  The reason why one would want to mimic a remote environment on one's local machine is to be able to understand which packages are going to work and to prevent the installation of incompatible packages which will slow down the deploy process.  For example, including "appscript" in the requirements.txt file lead to the dependency appscript being found, however since it is only compatible with the operating system OS, then upon attempting to install it within the Heroku build process, it was rejected, making the entire setup process fail.
+
+
+# Cleaning Up The Slug / server
+
+https://robots.thoughtbot.com/how-to-reduce-a-large-heroku-compiled-slug-size
+
+
+# App Architecture
+
+Having built the app, we obtained a better understanding of what the actual architecture looks like and so can draw a better sketch:
+
+![App Architecture](https://github.com/LinkNLearn/homedataflask/blob/master/img/homedataflask_arch.png?raw=true)
